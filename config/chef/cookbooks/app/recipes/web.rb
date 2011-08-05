@@ -8,6 +8,7 @@ include_recipe 'apache2'
 include_recipe 'php'
 include_recipe 'apache2::mod_php5'
 include_recipe 'php::pear'
+include_recipe 'git'
 
 # Set up user and group
 home_directory = "/home/#{node['web'][:user]}"
