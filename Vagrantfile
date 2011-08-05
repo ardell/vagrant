@@ -4,11 +4,11 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos-56-32"
+  config.vm.box = "centos-56-32-guest-additions"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://yum.mnxsolutions.com/vagrant/centos_56_32.box"
+  config.vm.box_url = "http://dl.dropbox.com/u/5037034/centos-56-32-guest-additions.box"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
@@ -22,6 +22,8 @@ Vagrant::Config.run do |config|
   config.vm.forward_port "http", 80, 8000
   config.vm.forward_port "ssh", 22, 2222
   config.ssh.forward_agent = true
+  config.ssh.max_tries = 120
+  config.ssh.timeout = 120
 
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
