@@ -48,7 +48,7 @@ Vagrant::Config.run do |config|
     chef.cookbooks_path = "config/chef/cookbooks"
     chef.roles_path = "config/chef/roles"
     chef.add_role "dev"
-    # chef.add_role "web"
+    chef.add_role "web"
     # chef.add_role "db"
   end
 
