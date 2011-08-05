@@ -7,6 +7,7 @@
 include_recipe 'apache2'
 include_recipe 'php'
 include_recipe 'apache2::mod_php5'
+include_recipe 'php::pear'
 
 # Set up user and group
 home_directory = "/home/#{node['web'][:user]}"
@@ -29,4 +30,12 @@ end
 # Set up apache default site
 apache_site "default" do
   action :enable
+end
+
+# Upgrade pear
+# NOTE: The only way to get pear to update reliably after the first
+# chef run is to use -f (force), which overwrites newer installed
+# packages. Is this ok?
+execute "Upgrade pear" do
+  command "pear channel-update pear.php.net && pear upgrade -f PEAR"
 end
