@@ -44,6 +44,7 @@ Vagrant::Config.run do |config|
   #   chef.json = { :mysql_password => "foo" }
   # end
   config.vm.provision :chef_solo do |chef|
+    chef.log_level = :debug
     chef.cookbooks_path = "config/chef/cookbooks"
     chef.roles_path = "config/chef/roles"
     chef.add_role "dev"
